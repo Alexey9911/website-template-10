@@ -1,6 +1,67 @@
 import { carouselItems, services, archive } from "../content/data.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  // 3D Canvas lazy loading optimization
+  function load3DCanvas() {
+    const iframe = document.getElementById('spline-iframe');
+    const placeholder = document.getElementById('canvas-placeholder');
+    
+    if (iframe && placeholder) {
+      console.log('Starting 3D canvas load...');
+      
+      // Start loading the iframe
+      const src = iframe.getAttribute('data-src');
+      if (src) {
+        iframe.src = src;
+        iframe.style.display = 'block';
+        iframe.style.opacity = '0';
+        
+        // Function to hide placeholder and show iframe
+        function showIframe() {
+          console.log('3D canvas loaded, hiding placeholder...');
+          
+          // Immediately disable placeholder interactions
+          placeholder.style.pointerEvents = 'none';
+          placeholder.style.zIndex = '-1';
+          
+          // Start fade out
+          placeholder.classList.add('fade-out');
+          
+          // Show iframe
+          iframe.style.opacity = '1';
+          iframe.classList.add('loaded');
+          
+          // Completely remove placeholder after animation
+          setTimeout(() => {
+            placeholder.style.display = 'none';
+          }, 600);
+        }
+        
+        // Add load event listener
+        iframe.onload = showIframe;
+        
+        // Also try when iframe content is ready
+        iframe.addEventListener('load', showIframe);
+        
+        // Fallback timeout in case load event doesn't fire
+        setTimeout(() => {
+          console.log('3D canvas load timeout, showing anyway...');
+          showIframe();
+        }, 8000); // Increased timeout to 8 seconds
+        
+        // Additional check after a shorter delay for faster sites
+        setTimeout(() => {
+          if (iframe.contentDocument || iframe.contentWindow) {
+            showIframe();
+          }
+        }, 3000);
+      }
+    }
+  }
+  
+  // Load 3D canvas after a short delay to prioritize critical content
+  setTimeout(load3DCanvas, 1000);
+  
   // lenis smooth scroll
   const lenis = new Lenis();
   lenis.on("scroll", ScrollTrigger.update);

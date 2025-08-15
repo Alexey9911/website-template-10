@@ -84,12 +84,24 @@
 
       <section class="hero">
         <div id="canvas3d">
+          <!-- Loading placeholder -->
+          <div id="canvas-placeholder">
+            <div class="placeholder-content">
+              <div class="loading-spinner"></div>
+              <p>Loading 3D Experience...</p>
+            </div>
+          </div>
+          
+          <!-- Lazy-loaded iframe -->
           <iframe
-            src="https://my.spline.design/glassdonut-40daa62dc6036e1e0f5af828a79805e6/"
+            id="spline-iframe"
+            data-src="https://my.spline.design/glassdonut-40daa62dc6036e1e0f5af828a79805e6/"
             frameborder="0"
             width="100%"
             height="100%"
             class="container__iframe"
+            loading="lazy"
+            style="display: none;"
           ></iframe>
         </div>
         <div class="wrapper">

@@ -1,0 +1,76 @@
+:root {
+  --bg: #f3f3f0;
+  --bg-dark: #191b20;
+  --text: #000;
+  --text-light: #f3f4ee;
+  --text-secondary: #757677;
+  --accent: #ab9cea;
+  --accent-darker: #8348ff;
+  --border: rgba(255, 255, 255, 0.125);
+  --border-dark: rgba(0, 0, 0, 0.125);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;  /* Solo bloquea scroll horizontal en el nivel más alto */
+}
+
+body {
+  width: 100%;
+  max-width: 100%;
+  /* Deja que Lenis maneje el overflow del body */
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+h1 {
+  font-family: "PP Editorial New", Georgia, serif;
+  font-size: 8rem;
+  font-weight: 400;
+  line-height: 120%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h2 {
+  font-family: "PP Editorial New", Georgia, serif;
+  font-size: 4rem;
+  font-weight: 400;
+  line-height: 120%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h3 {
+  font-family: "PP Editorial New", Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 120%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p,
+a {
+  font-family: "PP Editorial New", Arial, sans-serif;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  line-height: 120%;
+}
+
+p.secondary {
+  color: var(--text-secondary);
+}
